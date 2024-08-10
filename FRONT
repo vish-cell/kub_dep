@@ -1,0 +1,19 @@
+# Use Node.js image
+FROM node:16
+
+# Set working directory
+WORKDIR /usr/src/app
+
+# Copy the Node.js application files
+COPY package*.json ./
+COPY app.js ./
+COPY index.html ./
+
+# Install dependencies
+RUN npm install
+
+# Expose the port
+EXPOSE 3000
+
+# Start the application
+CMD ["node", "app.js"]

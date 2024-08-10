@@ -1,0 +1,12 @@
+# Use MySQL image
+FROM mysql:9
+
+# Environment variables
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=taskdb
+ENV MYSQL_USER=vishal
+ENV MYSQL_PASSWORD=1
+
+# Copy the SQL script to initialize the database
+COPY init.sql /docker-entrypoint-initdb.d/
+
