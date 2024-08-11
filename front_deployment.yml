@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-deployment
+  namespace: simple
+  labels:  # Corrected from 'lables' to 'labels'
+    app: website  # Changed 'name' to 'app' for consistency with selectors
+    env: front
+spec:  # Corrected from 'specs' to 'spec'
+  replicas: 3  # Moved 'replicas' under 'spec'
+  selector:  # Corrected from 'selectors' to 'selector'
+    matchLabels:  # Use 'matchLabels' under 'selector'
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:  # Added 'spec' under 'template'
+      containers:
+        - name: web
+          image: vishalg2022/front:2
+          ports:
+            - containerPort: 3000
+

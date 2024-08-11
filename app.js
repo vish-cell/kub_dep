@@ -10,7 +10,8 @@ const db = mysql.createConnection({
   host: 'mysql', // Docker service name for the MySQL container
   user: 'vishal',
   password: '1',
-  database: 'taskdb'
+  database: 'taskdb',
+  port: 3306
 });
 
 db.connect((err) => {

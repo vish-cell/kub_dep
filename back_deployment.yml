@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: back-deployment
+  namespace: simple 
+  labels:
+    app: back
+    env: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:  # Corrected from 'matchLables' to 'matchLabels'
+      app: back
+  template:
+    metadata:
+      labels:  # Added 'labels' under metadata
+        app: back
+    spec:
+      containers:
+        - name: mysql
+          image: vishalg2022/back
+          ports:
+            - containerPort: 3306

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: simple  # Use the same namespace as the back-deployment
+spec:
+  selector:
+    app: back  # Matches the app label in the back-deployment
+  ports:
+    - protocol: TCP
+      port: 3306         # MySQL typically runs on port 3306
+      targetPort: 3306   # The container port specified in the back-deployment
+  type: ClusterIP  # This exposes the service only within the cluster
